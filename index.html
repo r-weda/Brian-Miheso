@@ -46,50 +46,101 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 </nav>
 
  <style>
-        /* General styling for the navbar */
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Navbar container styling */
         .navbar {
             width: 100%;
-            background-color: black;
-            color: white;
+            background-color: #333;
             position: relative;
-        }
-
-        /* Hide the links by default on small screens */
-        .navbar-links {
-            display: none;
-            text-align: center;
-        }
-
-        /* Show the links in block mode when open */
-        .navbar-links a {
-            display: block;
-            padding: 10px 0;
-            color: white;
-            text-decoration: none;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .navbar-links a:hover {
-            background-color: rgba(0, 0, 0, 1);
+            z-index: 1000;
         }
 
         /* Hamburger icon styling */
         .hamburger {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
             cursor: pointer;
-            padding: 15px;
-            text-align: center;
-            background-color: black;
+            background-color: #333;
             color: white;
+            font-size: 18px;
         }
 
-        /* Show the links when clicked on the hamburger */
-        .navbar-links.show {
+        .hamburger span {
             display: block;
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.3s;
         }
 
-        /* Hide on medium and large screens */
+        /* Links are hidden initially */
+        .navbar-links {
+            display: none;
+            flex-direction: column;
+            text-align: center;
+            background-color: #444;
+        }
+
+        /* Show links when toggled */
+        .navbar-links.show {
+            display: flex;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .navbar-links a {
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .navbar-links a:hover {
+            background-color: #555;
+        }
+
+        /* Smooth fade-in animation for links */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hamburger animation when clicked */
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Show menu only on small screens */
         @media (min-width: 768px) {
             #myNavbar {
                 display: none;
@@ -102,10 +153,14 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <!-- Navbar for small screens -->
 <div class="navbar w3-top w3-hide-large w3-hide-medium" id="myNavbar">
     <!-- Hamburger icon -->
-    <div class="hamburger" onclick="toggleMenu()">&#9776; Menu</div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
 
     <!-- Links hidden by default -->
-    <div class="navbar-links w3-bar w3-black w3-opacity w3-hover-opacity-off" id="navbarLinks">
+    <div class="navbar-links w3-bar" id="navbarLinks">
         <a href="#" class="w3-bar-item w3-button">HOME</a>
         <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
         <a href="#photos" class="w3-bar-item w3-button">PROJECTS</a>
@@ -493,14 +548,13 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 <!-- END PAGE CONTENT -->
 </div>
 <script>
-    // Toggle function to show or hide the navbar links
+    // Toggle function to show or hide the navbar links and animate the hamburger
     function toggleMenu() {
         var links = document.getElementById("navbarLinks");
-        if (links.classList.contains("show")) {
-            links.classList.remove("show");
-        } else {
-            links.classList.add("show");
-        }
+        var hamburger = document.querySelector(".hamburger");
+        
+        links.classList.toggle("show");
+        hamburger.classList.toggle("open");
     }
 </script>
 </body>
