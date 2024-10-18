@@ -45,14 +45,72 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </a>
 </nav>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
-  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
-    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
-    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
-    <a href="#photos" class="w3-bar-item w3-button" style="width:25% !important">PROJECTS</a>
-    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
-  </div>
+ <style>
+        /* General styling for the navbar */
+        .navbar {
+            width: 100%;
+            background-color: black;
+            color: white;
+            position: relative;
+        }
+
+        /* Hide the links by default on small screens */
+        .navbar-links {
+            display: none;
+            text-align: center;
+        }
+
+        /* Show the links in block mode when open */
+        .navbar-links a {
+            display: block;
+            padding: 10px 0;
+            color: white;
+            text-decoration: none;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar-links a:hover {
+            background-color: rgba(0, 0, 0, 1);
+        }
+
+        /* Hamburger icon styling */
+        .hamburger {
+            display: block;
+            cursor: pointer;
+            padding: 15px;
+            text-align: center;
+            background-color: black;
+            color: white;
+        }
+
+        /* Show the links when clicked on the hamburger */
+        .navbar-links.show {
+            display: block;
+        }
+
+        /* Hide on medium and large screens */
+        @media (min-width: 768px) {
+            #myNavbar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar for small screens -->
+<div class="navbar w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+    <!-- Hamburger icon -->
+    <div class="hamburger" onclick="toggleMenu()">&#9776; Menu</div>
+
+    <!-- Links hidden by default -->
+    <div class="navbar-links w3-bar w3-black w3-opacity w3-hover-opacity-off" id="navbarLinks">
+        <a href="#" class="w3-bar-item w3-button">HOME</a>
+        <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
+        <a href="#photos" class="w3-bar-item w3-button">PROJECTS</a>
+        <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
+    </div>
 </div>
 
 <!-- Page Content -->
@@ -434,6 +492,16 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
 <!-- END PAGE CONTENT -->
 </div>
-
+<script>
+    // Toggle function to show or hide the navbar links
+    function toggleMenu() {
+        var links = document.getElementById("navbarLinks");
+        if (links.classList.contains("show")) {
+            links.classList.remove("show");
+        } else {
+            links.classList.add("show");
+        }
+    }
+</script>
 </body>
 </html>
