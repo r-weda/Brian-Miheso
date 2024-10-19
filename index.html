@@ -45,68 +45,15 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   </a>
 </nav>
 
-<style>
-       
-
-        #myNavbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            color: white;
-            padding: 10px;
-        }
-
-        #myNavbar a {
-            color: white;
-            text-decoration: none;
-            padding: 14px 20px;
-        }
-
-       #myNavbar a:hover {
-            background-color: #575757;
-        }
-
-      #myNavbar-links {
-            display: none;
-            flex-direction: column;
-            width: 100%;
-        }
-
-        #myNavbar-links a {
-            text-align: center;
-            padding: 10px;
-            border-top: 1px solid #444;
-        }
-
-        #myNavbar-toggle {
-            cursor: pointer;
-            font-size: 24px;
-        }
-
-        @media (min-width: 600px) {
-            #myNavbar-links {
-                display: flex;
-                flex-direction: row;
-            }
-
-            #myNavbar-toggle {
-                display: none;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div id="myNavbar">
-     
-        <div class="navbar-toggle" id="navbarToggle">&#9776;</div>
-        <div class="navbar-links" id="navbarLinks">
-            <a href="#" class="w3-bar-item w3-button">HOME</a>
-            <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
-              <a href="#projects" class="w3-bar-item w3-button">PROJECTS</a>
-            <a href="#contact" class="w3-bar-item w3-button">CONTACT</a>
-        </div>
-    </div>
+<!-- Navbar on small screens (Hidden on medium and large screens) -->
+<div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
+  <div class="w3-bar w3-black w3-opacity w3-hover-opacity-off w3-center w3-small">
+    <a href="#" class="w3-bar-item w3-button" style="width:25% !important">HOME</a>
+    <a href="#about" class="w3-bar-item w3-button" style="width:25% !important">ABOUT</a>
+    <a href="#mywork" class="w3-bar-item w3-button" style="width:25% !important">MY WORK</a>
+    <a href="#contact" class="w3-bar-item w3-button" style="width:25% !important">CONTACT</a>
+  </div>
+</div>
 
 <!-- Page Content -->
 <div class="w3-padding-large" id="main">
@@ -487,17 +434,6 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 
 <!-- END PAGE CONTENT -->
 </div>
-   <script>
-        const navbarToggle = document.getElementById('navbarToggle');
-        const navbarLinks = document.getElementById('navbarLinks');
-
-        navbarToggle.addEventListener('click', () => {
-            if (navbarLinks.style.display === 'flex') {
-                navbarLinks.style.display = 'none';
-            } else {
-                navbarLinks.style.display = 'flex';
-            }
-        });
-    </script>
+  
 </body>
 </html>
