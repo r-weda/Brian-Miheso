@@ -46,13 +46,9 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
 </nav>
 
 <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+       
 
-        .navbar {
+        #myNavbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -61,48 +57,48 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
             padding: 10px;
         }
 
-        .navbar a {
+        #myNavbar a {
             color: white;
             text-decoration: none;
             padding: 14px 20px;
         }
 
-        .navbar a:hover {
+       #myNavbar a:hover {
             background-color: #575757;
         }
 
-        .navbar-links {
+      #myNavbar-links {
             display: none;
             flex-direction: column;
             width: 100%;
         }
 
-        .navbar-links a {
+        #myNavbar-links a {
             text-align: center;
             padding: 10px;
             border-top: 1px solid #444;
         }
 
-        .navbar-toggle {
+        #myNavbar-toggle {
             cursor: pointer;
             font-size: 24px;
         }
 
         @media (min-width: 600px) {
-            .navbar-links {
+            #myNavbar-links {
                 display: flex;
                 flex-direction: row;
             }
 
-            .navbar-toggle {
+            #myNavbar-toggle {
                 display: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="navbar-brand">MySite</div>
+    <div id="myNavbar">
+     
         <div class="navbar-toggle" id="navbarToggle">&#9776;</div>
         <div class="navbar-links" id="navbarLinks">
             <a href="#" class="w3-bar-item w3-button">HOME</a>
